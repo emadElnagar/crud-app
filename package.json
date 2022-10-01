@@ -1,0 +1,35 @@
+{
+  "name": "crud",
+  "version": "1.0.0",
+  "description": "Crud app which user can create read update and delete.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/index.js",
+    "dev": "nodemon --watch backend exec node experimental-modules backend/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emadElnagar/crud-app.git"
+  },
+  "keywords": [
+    "crud",
+    "mern",
+    "mern",
+    "crud",
+    "fastify",
+    "crud"
+  ],
+  "author": "Emad Elnagar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emadElnagar/crud-app/issues"
+  },
+  "homepage": "https://github.com/emadElnagar/crud-app#readme",
+  "dependencies": {
+    "fastify": "^4.7.0",
+    "mongoose": "^6.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
