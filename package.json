@@ -27,7 +27,7 @@
   "homepage": "https://github.com/emadElnagar/crud-app#readme",
   "dependencies": {
     "fastify": "^4.7.0",
-    "mongoose": "^6.6.3"
+    "mongoose": "^6.6.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
