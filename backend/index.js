@@ -7,11 +7,11 @@ const Book = require("./models/books.models");
 // GET ALL BOOKS
 fastify.route({
   method: "GET",
-  url: "/products",
+  url: "/books",
   handler: async (request, reply) => {
     try {
-      const products = await Product.find();
-      reply.code(200).send(products);
+      const Books = await Book.find();
+      reply.code(200).send(Books);
     } catch (err) {
       throw boom.boomify(err);
     }
