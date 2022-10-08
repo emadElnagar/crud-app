@@ -8,7 +8,7 @@ const Book = require("./models/books.models");
 fastify.route({
   method: "GET",
   url: "/books",
-  handler: async (request, reply) => {
+  handler: async (_request, reply) => {
     try {
       const Books = await Book.find();
       reply.code(200).send(Books);
@@ -17,6 +17,23 @@ fastify.route({
     }
   },
 });
+
+// CREATE A NEW BOOK
+fastify.route({
+  method: "POST",
+  url: "/books",
+  handler: async (request, reply) => {
+    try {
+      const newProduct = {
+        title: request.body.title
+      }
+      await newProduct.save();
+      reply.code(201).send('Books added successfully');
+    } catch(err) {
+      throw boom.boomify(err);
+    }
+  }
+})
 
 const start = async () => {
   try {
