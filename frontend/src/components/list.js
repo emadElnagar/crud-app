@@ -1,40 +1,23 @@
-import { DeleteButton, ListItem, UpdateButton } from "../styles/main";
-import { MdDelete, MdModeEdit } from "react-icons/md";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Book from "./Book";
 
 function List () {
+  const [list, setList] = useState([]);
+  useEffect(() => {
+    axios.get('http://127.0.0.1:5000/books').then((books) => {
+      setList(books.data);
+    }).catch((err) => {
+      console.error(err);
+    })
+  }, [list]);
   return (
     <ul>
-      <ListItem>
-        <span>book 1</span>
-        <div>
-          <UpdateButton><MdModeEdit /></UpdateButton>
-          <DeleteButton><MdDelete /></DeleteButton>
-        </div>
-      </ListItem>
-
-      <ListItem>
-        <span>book 1</span>
-        <div>
-          <UpdateButton><MdModeEdit /></UpdateButton>
-          <DeleteButton><MdDelete /></DeleteButton>
-        </div>
-      </ListItem>
-
-      <ListItem>
-        <span>book 1</span>
-        <div>
-          <UpdateButton><MdModeEdit /></UpdateButton>
-          <DeleteButton><MdDelete /></DeleteButton>
-        </div>
-      </ListItem>
-
-      <ListItem>
-        <span>book 1</span>
-        <div>
-          <UpdateButton><MdModeEdit /></UpdateButton>
-          <DeleteButton><MdDelete /></DeleteButton>
-        </div>
-      </ListItem>
+        {
+          list.map((book) => (
+            <Book key={book._id} book={book} />
+          ))
+        }
     </ul>
   )
 }

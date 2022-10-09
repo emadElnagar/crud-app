@@ -13,7 +13,7 @@ fastify.route({
       const Books = await Book.find();
       reply.code(200).send(Books);
     } catch (err) {
-      throw boom.boomify(err);
+      console.error(err);
     }
   },
 });
@@ -30,7 +30,7 @@ fastify.route({
       await newProduct.save();
       reply.code(201).send('Books added successfully');
     } catch(err) {
-      throw boom.boomify(err);
+      console.error(err);
     }
   }
 })
