@@ -24,16 +24,34 @@ fastify.route({
   url: "/books",
   handler: async (request, reply) => {
     try {
-      const newProduct = {
+      const newBook = new Book ({
         title: request.body.title
-      }
-      await newProduct.save();
-      reply.code(201).send('Books added successfully');
+      });
+      await newBook.save();
+      reply.code(201).send('Book added successfully');
     } catch(err) {
       console.error(err);
     }
   }
-})
+});
+
+// UPDATE BOOK
+fastify.route({
+  method: "PUT",
+  url: "/books/:id/update",
+  handler: async (request, reply) => {
+    const newBook = {
+      title: req.body.title
+    }
+    const BookId = request.params.id;
+    await Book.findByIdAndUpdate(BookId, newBook, (err, _doc) => {
+      if (err) {
+        console.error(err);
+      }
+      reply.code(201).send('Book updated successfully');
+    });
+  }
+});
 
 const start = async () => {
   try {
