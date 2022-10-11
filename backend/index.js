@@ -1,8 +1,14 @@
 const fastify = require('fastify')({ logger: true })
 const port = process.env.PORT || 5000
+const cors = require('@fastify/cors');
 
 require("./utils/db");
 const Book = require("./models/books.models");
+
+fastify.register(cors, { 
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+});
 
 // GET ALL BOOKS
 fastify.route({
