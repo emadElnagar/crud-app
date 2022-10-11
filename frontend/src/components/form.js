@@ -7,8 +7,10 @@ function Form () {
   const handleSubmit = async(e) => {
     e.preventDefault();
     axios.post('http://127.0.0.1:5000/books', {
-      title: title
+      title,
     });
+    e.target.reset();
+    setTitle('');
   }
   return (
     <CreateForm method="post" onSubmit={handleSubmit}>
