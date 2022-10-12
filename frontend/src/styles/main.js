@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { danger, MainColor, update } from './variables';
+import { danger, MainColor, success, primary } from './variables';
 
 export const MainHeader = styled.h1`
   text-align: center;
@@ -45,22 +45,30 @@ export const ListItem = styled.li`
   justify-content: space-between;
 `
 
-export const UpdateButton = styled.button`
-  color: #fff;  
-  background: ${update};
+export const CheckButton = styled.button`
+  color: ${success};  
+  background: transparent;
   border: none;
-  padding: 10px 15px;
   cursor: pointer;
-  margin: 0 5px;
   font-size: 20px;
 `
 
-export const DeleteButton = styled.button`
-  color: #fff;  
-  background: ${danger};
+export const UpdateButton = styled.button`
+  color: ${primary};  
+  background: transparent;
   border: none;
-  padding: 10px 15px;
   cursor: pointer;
-  margin: 0 5px;
+  font-size: 20px;
+  margin: 0 15px;
+  border-right: 1px solid #000;
+  border-left: 1px solid #000;
+  padding: 0 10px
+`
+
+export const DeleteButton = styled.button`
+  color: ${danger};  
+  background: transparent;
+  border: none;
+  cursor: pointer;
   font-size: 20px;
 `
