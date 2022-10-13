@@ -47,7 +47,7 @@ fastify.route({
   url: "/books/:id/update",
   handler: async (request, reply) => {
     const newBook = {
-      title: req.body.title
+      title: request.body.title
     }
     const BookId = request.params.id;
     await Book.findByIdAndUpdate(BookId, newBook, (err, _doc) => {
