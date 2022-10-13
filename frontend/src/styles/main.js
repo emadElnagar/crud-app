@@ -43,13 +43,15 @@ export const ListItem = styled.li`
   padding: 15px 0;
   display: flex;
   justify-content: space-between;
+  &.d-none {
+    display: none;
+  }
 `
 
 export const CheckButton = styled.button`
   color: ${success};  
   background: transparent;
   border: none;
-  cursor: pointer;
   font-size: 20px;
 `
 
@@ -57,7 +59,6 @@ export const UpdateButton = styled.button`
   color: ${primary};  
   background: transparent;
   border: none;
-  cursor: pointer;
   font-size: 20px;
   margin: 0 15px;
   border-right: 1px solid #000;
@@ -69,6 +70,33 @@ export const DeleteButton = styled.button`
   color: ${danger};  
   background: transparent;
   border: none;
-  cursor: pointer;
+  font-size: 20px;
+`
+
+export const UpdateForm = styled.form`
+  display: flex;
+  margin-top: 10px;
+  &.d-none {
+    display: none;
+  }
+  input[type='text'] {
+    padding: 5px;
+  }
+`
+
+export const SubmitButton = styled.button`
+  color: #fff;
+  background: ${success};
+  border: none;
+  padding: 0 15px;
+  margin: 0 5px;
+  font-size: 20px;
+`
+
+export const CancelButton = styled.button`
+  color: #fff;
+  background: ${danger};
+  border: none;
+  padding: 0 20px;
   font-size: 20px;
 `

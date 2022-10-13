@@ -16,3 +16,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+::placeholder {
+  font-size: 1.2rem;
+}
+
+input:not(:placeholder-shown) {
+  font-size: 25px;
+}
+
+button {
+  cursor: pointer;
+}
