@@ -59,6 +59,21 @@ fastify.route({
   }
 });
 
+// DELETE BOOK
+fastify.route({
+  method: "DELETE",
+  url: "/books/:id/delete",
+  handler: async (request, reply) => {
+    const BookId = request.params.id;
+    await Book.findByIdAndDelete(BookId, (err, _doc) => {
+      if (err) {
+        console.error(err);
+      }
+      reply.code(201).send('Book deleted successfully');
+    });
+  }
+});
+
 const start = async () => {
   try {
     await fastify.listen({ port: port })
