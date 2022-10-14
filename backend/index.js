@@ -74,14 +74,32 @@ fastify.route({
   }
 });
 
-// BOOK IS READ
+// BOOK READ DONE
 fastify.route({
   method: "PATCH",
   url: "/books/:id/read",
   handler: async (request, reply) => {
     const bookId = request.params.id;
     const newBook = {
-      isRead: request.body.isRead
+      isRead: true
+    }
+    await Book.findByIdAndUpdate(bookId, newBook, (err, _doc) => {
+      if (err) {
+        console.error(err);
+      }
+      reply.code(201).send('Book Updated Successfully');
+    });
+  }
+});
+
+// BOOK HASN'T READ DONE
+fastify.route({
+  method: "PATCH",
+  url: "/books/:id/read",
+  handler: async (request, reply) => {
+    const bookId = request.params.id;
+    const newBook = {
+      isRead: false
     }
     await Book.findByIdAndUpdate(bookId, newBook, (err, _doc) => {
       if (err) {
