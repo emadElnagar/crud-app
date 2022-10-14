@@ -7,7 +7,7 @@ const Book = require("./models/books.models");
 
 fastify.register(cors, { 
   origin: "*",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
 });
 
 // GET ALL BOOKS
@@ -70,6 +70,24 @@ fastify.route({
         console.error(err);
       }
       reply.code(201).send('Book deleted successfully');
+    });
+  }
+});
+
+// BOOK IS READ
+fastify.route({
+  method: "PATCH",
+  url: "/books/:id/read",
+  handler: async (request, reply) => {
+    const bookId = request.params.id;
+    const newBook = {
+      isRead: request.body.isRead
+    }
+    await Book.findByIdAndUpdate(bookId, newBook, (err, _doc) => {
+      if (err) {
+        console.error(err);
+      }
+      reply.code(201).send('Book Updated Successfully');
     });
   }
 });

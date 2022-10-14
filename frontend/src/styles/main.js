@@ -49,10 +49,13 @@ export const ListItem = styled.li`
 `
 
 export const CheckButton = styled.button`
-  color: ${success};  
+  color: #aaa;
   background: transparent;
   border: none;
   font-size: 20px;
+  .done {
+    color: ${success};
+  }
 `
 
 export const UpdateButton = styled.button`

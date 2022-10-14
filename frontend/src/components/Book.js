@@ -47,7 +47,14 @@ function Book (props) {
       <ListItem className={`${isUpdate === true ? 'd-none': ''}`}>
         <span>{book.title}</span>
         <div>
-          <CheckButton title="Read"><GiCheckMark /></CheckButton>
+          {
+            book.isRead
+            ? (
+              <CheckButton title="Read"><GiCheckMark /></CheckButton>
+            ) : (
+              <CheckButton className="done" title="Read"><GiCheckMark /></CheckButton>
+            )
+          }
           <UpdateButton title="Update" onClick={() => setIsUpdate(true)}><MdModeEdit /></UpdateButton>
           <DeleteButton onClick={() => handleDelete(book._id)} title="Delete"><MdDelete /></DeleteButton>
         </div>
