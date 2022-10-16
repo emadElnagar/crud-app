@@ -42,17 +42,23 @@ function Book (props) {
       }
     })
   }
+  const bookReadCancel = (id) => {
+    axios.patch(`http://127.0.0.1:5000/books/${id}/read/cancel`);
+  }
+  const bookReadDone = (id) => {
+    axios.patch(`http://127.0.0.1:5000/books/${id}/read/done`);
+  }
   return (
     <Fragment>
       <ListItem className={`${isUpdate === true ? 'd-none': ''}`}>
         <span>{book.title}</span>
         <div>
           {
-            book.isRead
+            book.isRead === true
             ? (
-              <CheckButton title="Read"><GiCheckMark /></CheckButton>
+              <CheckButton onClick={() => bookReadCancel(book._id)} title="Read"><GiCheckMark className="done" /></CheckButton>
             ) : (
-              <CheckButton className="done" title="Read"><GiCheckMark /></CheckButton>
+              <CheckButton onClick={() => bookReadDone(book._id)} title="Read"><GiCheckMark /></CheckButton>
             )
           }
           <UpdateButton title="Update" onClick={() => setIsUpdate(true)}><MdModeEdit /></UpdateButton>

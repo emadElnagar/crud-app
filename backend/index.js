@@ -95,7 +95,7 @@ fastify.route({
 // BOOK HASN'T READ DONE
 fastify.route({
   method: "PATCH",
-  url: "/books/:id/read",
+  url: "/books/:id/read/cancel",
   handler: async (request, reply) => {
     const bookId = request.params.id;
     const newBook = {
